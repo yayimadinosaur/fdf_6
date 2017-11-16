@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:50:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/10/18 17:50:36 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/16 15:07:39 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int		parse_contents(char **av)
 	int		fd;
 	char	*line;
 
-	int		chk_line = 1;	//
+	int		chk_line = 0;	//
 
 	if ((fd = open(av[1], O_RDONLY)) < 0)
 		ft_puterror(".fdf file reading failed\n");

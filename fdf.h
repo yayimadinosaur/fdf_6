@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2017/10/18 18:44:14 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/16 15:03:37 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct			s_pts
 	float					x;
 	float					y;
 	float					z;
-	float					x2;	//x pixel stop
-	float					y2;	//y pixel stop
+//	float					x2;	//x pixel stop
+//	float					y2;	//y pixel stop
 	float					run;	//x2 - x1
 	float					rise;	//y2 - y1
 	float					m;	//slope of line = m
@@ -73,7 +73,7 @@ typedef struct			s_env
 
 t_env		*parse_fdf(char **av);
 
-void		set_values(int win_size, t_env *e, char **av);
+int			set_values2(int win_size, t_env *e, char **av);
 
 t_pts		**create_struct(int row, int col);
 void		array_int(char **result_str, int n, int *array);

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:51:20 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/16 15:06:25 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/16 15:25:29 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ static void		set_values_2(t_env *e, int i, int j)
 	e->pts[i][j].y = i * e->gap;
 //	e->pts[i][j].x2 = ((j + 1 < e->col ? (j + 1) * e->gap : e->pts[i][j].x));
 //	e->pts[i][j].y2 = ((i + 2 < e->col ? (i + 1) * e->gap : e->pts[i][j].y));
-//	e->pts[i][j].run = round(e->pts[i][j].x2) - round(e->pts[i][j].x);
-//	e->pts[i][j].rise = round(e->pts[i][j].y2) - round(e->pts[i][j].y);
-	e->pts[i][j].run = round(e->pts[i][j+1].x) - round(e->pts[i][j].x);
-	e->pts[i][j].rise = round(e->pts[i][j+1].y) - round(e->pts[i][j].y);
+	if (j + 1 <= e->row)
+	{
+		e->pts[i][j].run = round(e->pts[i][j+1].x) - round(e->pts[i][j].x);
+		e->pts[i][j].rise = round(e->pts[i][j+1].y) - round(e->pts[i][j].y);
+	}
 	if (e->pts[i][j].run == 0 || e->pts[i][j].rise == 0)
 		e->pts[i][j].m = 0;	//draw straight
 	if (e->pts[i][j].run != 0 && e->pts[i][j].rise != 0)
@@ -31,6 +32,7 @@ static void		set_values_2(t_env *e, int i, int j)
 	e->pts[i][j].offset = 0.5;
 }
 
+//need to add int return of -1 because of fail
 static void		clean_strsplit(char **buff, char *line, t_env *e, int range)
 {
 	int		i;
@@ -39,7 +41,7 @@ static void		clean_strsplit(char **buff, char *line, t_env *e, int range)
 	free(line);
 	if (!buff)
 	{
-		free(e);
+		free(e);	//remove? main gets rid of e
 		ft_puterror("strsplit failed\n");
 	}
 	while (i > -1)
@@ -50,10 +52,8 @@ static void		clean_strsplit(char **buff, char *line, t_env *e, int range)
 	free(buff);
 }
 
-//if input n for window is <= 0, return -1, else 1.
 static int		set_window1(int n, t_env *e)
 {
-//	printf("set values - set window1 1\n");
 	if (n < 0 || n == 0)
 	{
 		ft_putstr("window size needs to be > 0\n");
@@ -71,10 +71,8 @@ static int		set_window1(int n, t_env *e)
 	e->w_gap = (e->end_x - e->start_x) / (e->col - 1);	//need floats?
 	e->gap = (e->h_gap >= e->w_gap ? e->w_gap : e->h_gap);
 	return (1);
-//	printf("set values - set window done\n");
 }
 
-//need to add return condition from set_window1
 int			set_values2(int win_size, t_env *e, char **av)
 {
 	int		i;
@@ -92,7 +90,7 @@ int			set_values2(int win_size, t_env *e, char **av)
 	{
 		j = 0;
 		if (!(buff = ft_strsplit(line, ' ')))
-			clean_strsplit(buff, line, e, e->col);
+			clean_strsplit(buff, line, e, e->col);	//need to break after clean str split
 		while (j < e->col)
 		{
 			e->pts[i][j].z = ft_atoi(buff[j]);

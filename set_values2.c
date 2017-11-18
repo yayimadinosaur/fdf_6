@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:51:20 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/16 15:25:29 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/17 16:55:39 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ static void		set_values_2(t_env *e, int i, int j)
 		e->pts[i][j].run = round(e->pts[i][j+1].x) - round(e->pts[i][j].x);
 		e->pts[i][j].rise = round(e->pts[i][j+1].y) - round(e->pts[i][j].y);
 	}
-	if (e->pts[i][j].run == 0 || e->pts[i][j].rise == 0)
+/*
+ *do slope after rotate not before
+  if (e->pts[i][j].run == 0 || e->pts[i][j].rise == 0)
 		e->pts[i][j].m = 0;	//draw straight
 	if (e->pts[i][j].run != 0 && e->pts[i][j].rise != 0)
 		e->pts[i][j].m = e->pts[i][j].rise / e->pts[i][j].run;
 	e->pts[i][j].adjust = (e->pts[i][j].m >= 0 ? 1 : -1);
 //	e->pts[i][j].m >= 0 ? e->pts[i][j].adjust = 1 : e->pts[i][j].adjust = -1;
 	e->pts[i][j].offset = 0.5;
+	*/
 }
 
 //need to add int return of -1 because of fail

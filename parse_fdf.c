@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:50:33 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/16 15:07:39 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/17 17:00:36 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ static void		parse_filename(char *str)
 		ft_puterror(".fdf file name invalid: file extension not correct");
 }
 
+//remember to free create struct properly if it fails during malloc
 t_env			*parse_fdf(char **av)
 {
 	t_env	*e;

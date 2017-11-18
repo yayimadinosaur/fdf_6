@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/16 15:03:37 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/18 14:43:21 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ int			set_values2(int win_size, t_env *e, char **av);
 t_pts		**create_struct(int row, int col);
 void		array_int(char **result_str, int n, int *array);
 
-//void		draw(void *mlx, void *win, t_env *e);
-void		draw1(t_env *e);
+void		draw(t_env *e);
 
 void		draw_right(t_env *e);
 void		draw_down(t_env *e);
 void		rotate(t_env *e);
+void		set_limit(t_env *e);
 //void		translate(t_fdfstore *store, t_env *e);
 //
 //ttest functions

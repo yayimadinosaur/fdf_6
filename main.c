@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:50:09 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/17 19:49:41 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/18 14:04:39 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int ac, char **av)
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, 600, 600, "42");
 	rotate(e);
+	draw(e);
 	mlx_loop(e->mlx);
 	return (0);
 }

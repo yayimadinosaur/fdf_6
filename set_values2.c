@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:51:20 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/17 16:55:39 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/18 14:52:02 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		clean_strsplit(char **buff, char *line, t_env *e, int range)
 
 static int		set_window1(int n, t_env *e)
 {
-	if (n < 0 || n == 0)
+	if (n <= 0)
 	{
 		ft_putstr("window size needs to be > 0\n");
 		return (-1);

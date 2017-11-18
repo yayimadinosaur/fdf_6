@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:50:09 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/17 17:06:01 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/17 19:49:41 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int		main(int ac, char **av)
 	mlx_loop(e->mlx);
 	return (0);
 }
-
+//slope
 //delta = abs of slope
 //offset = add delta
 //
-//off
+//threshold = when to change
+//adjust = +1 / -1 depending on slope

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:09:16 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/27 17:14:40 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/27 19:49:54 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	set_slope(t_env *e, int i, int j, int direction)
 		e->run = e->pts[i + 1][j].x - e->pts[i][j].x;
 		e->rise = e->pts[i + 1][j].y - e->pts[i][j].y;
 	}
-	printf("i[%i]j[%i]run[%f]rise[%f]\n", i , j, e->run, e->rise);
+	if (e->run == 0 || e->run == e->rise)
+		e->slope = 0;
+	else
+		e->slope = fabs(e->rise / e->run);
+	printf("set_slope i[%i]j[%i]run[%f]rise[%f]slope[%f]\n", i , j, e->run, e->rise, e->slope);
 }
 
 //do too much dont need bottom

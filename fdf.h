@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/20 18:05:56 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/27 19:55:21 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		draw_right(t_env *e);
 void		draw_down(t_env *e);
 void		rotate(t_env *e);
 void		set_slope(t_env *e, int i, int j, int direction);
-//void		translate(t_fdfstore *store, t_env *e);
+void		translate(t_env *e);
 //
 //ttest functions
 void		print_test(t_env *e);

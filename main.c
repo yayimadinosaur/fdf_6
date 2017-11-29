@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:50:09 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/27 19:51:19 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/28 18:42:05 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ int		main(int ac, char **av)
 		free(e);
 		return (0);
 	}
+	printf("set_values2 fin\n");
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, n, n, "42");
+	printf("start rotate\n");
 	rotate(e);
+	printf("rotate fin\n");
 	translate(e);
+	printf("traslate fin\n");
 	draw(e);
 	mlx_loop(e->mlx);
 	return (0);

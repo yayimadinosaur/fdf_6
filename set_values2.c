@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:51:20 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/20 17:40:21 by wfung            ###   ########.fr       */
+/*   Updated: 2017/11/28 18:06:14 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int			set_values2(int win_size, t_env *e, char **av)
 	char	**buff;
 	int		fd;
 
+	int		k = 0; //
+	int		p = 0; //
 	i = 0;
 	if ((fd = open(av[1], O_RDONLY)) < 0)
 		ft_puterror(".fdf file reading failed\n");
@@ -97,12 +99,25 @@ int			set_values2(int win_size, t_env *e, char **av)
 		{
 			e->pts[i][j].z = ft_atoi(buff[j]);
 			set_values_2(e, i, j);
-			//printf("setv i[%i]j[%i]\nx [%f]\ny [%f]\nz [%f]\nrun [%f]\nrise [%f]\nm [%f]\noffset [%f]\nadjust [%f]\n\n", i, j , e->pts[i][j].x, e->pts[i][j].y,e->pts[i][j].z ,e->pts[i][j].run ,e->pts[i][j].rise ,e->pts[i][j].m ,e->pts[i][j].offset ,e->pts[i][j].adjust );	//
 			j++;
 		}
 		clean_strsplit(buff, line, e, e->col);
 		i++;
 	}
 	close(fd);
+	//	remove everything after
+	while (k < e->row)
+	{
+		p = 0;
+		while (p < e->col)
+		{
+			printf("[%i][%i]x[%f]", p, k, e->pts[k][p].x);
+			printf("y[%f]", e->pts[k][p].y);
+			printf("z[%f]\n", e->pts[k][p].z);
+			p++;
+		}
+		k++;
+	}
+	printf("\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:50:09 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/28 18:42:05 by wfung            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:53:22 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,4 @@ int		main(int ac, char **av)
 //offset = add delta
 //
 //threshold = when to change
-//adjust = +1 / -1 depending on slope
+//adjust = 1 if slope >= 0 else -1

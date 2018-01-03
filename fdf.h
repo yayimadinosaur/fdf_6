@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/02 18:23:07 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/02 18:40:28 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ t_pts		**create_struct(int row, int col);
 void		array_int(char **result_str, int n, int *array);
 
 void		draw(t_env *e);
+
+void		draw1(t_env *e);
 
 void		draw_right(t_env *e);
 void		draw_down(t_env *e);

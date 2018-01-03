@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:09:16 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/27 19:49:54 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/02 18:52:49 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	set_slope(t_env *e, int i, int j, int direction)
 	if (e->run == 0 || e->run == e->rise)
 		e->slope = 0;
 	else
+		//slope calculation might be wrong? might need conditional
 		e->slope = fabs(e->rise / e->run);
 	printf("set_slope i[%i]j[%i]run[%f]rise[%f]slope[%f]\n", i , j, e->run, e->rise, e->slope);
 }

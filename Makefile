@@ -6,7 +6,7 @@
 #    By: wfung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/11 14:50:44 by wfung             #+#    #+#              #
-#    Updated: 2017/11/27 19:51:49 by wfung            ###   ########.fr        #
+#    Updated: 2018/01/02 18:41:40 by wfung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	=	main.c\
 			create_struct.c\
 			rotate.c\
 			translate.c\
-			draw.c\
+			draw1.c\
 			set_slope.c\
 
 OBJ =		${SRCS:.c=.o}

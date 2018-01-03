@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/27 19:55:21 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/02 18:23:07 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct			s_env
 	float				slope;
 	float				offset;
 	float				adjust;
+	float				threshold;
 	float				run;
 	float				rise;
 

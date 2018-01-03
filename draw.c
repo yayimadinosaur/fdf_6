@@ -6,13 +6,14 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:04:59 by wfung             #+#    #+#             */
-/*   Updated: 2017/12/01 19:58:06 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/02 18:25:25 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // m > -1 && < 1
+/*
 void	draw_gradual(t_env *e, int i, int j, int direction)
 {
 	e->delta = fabs((float)e->run / e->rise);
@@ -24,6 +25,7 @@ void	draw_sharp(t_env *e, int i, int j, int direction)
 {
 	e->delta = fabs(e->slope);
 }
+*/
 
 void	draw_straight(t_env *e, int i, int j, int direction)
 {
@@ -101,13 +103,15 @@ void	draw_right(t_env *e)
 				draw_straight(e, i, j, 0);
 			else
 			{
-				m >= 0 ? e->adjust = 1 : e->adjust = -1;
+				e->slope >= 0 ? (e->adjust = 1) : (e->adjust = -1);
 				e->offset = 0;
 				e->threshold = 0.5;
 				if (e->slope >= 0 && e->slope <= 1)
-					draw_sharp(e, i, j, 0);
+					printf("draw_sharp %i %i 0", i, j);
+			//		draw_sharp(e, i, j, 0);
 				else
-					draw_gradual(e, i, j, 0);
+					printf("draw_grad %i %i 0\n", i, j);
+			//		draw_gradual(e, i, j, 0);
 			}
 			printf("draw_right j = %i\n", j);
 			j++;

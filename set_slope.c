@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:09:16 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/02 18:52:49 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/03 16:51:24 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,19 @@ void	set_slope(t_env *e, int i, int j, int direction)
 		e->run = e->pts[i + 1][j].x - e->pts[i][j].x;
 		e->rise = e->pts[i + 1][j].y - e->pts[i][j].y;
 	}
+	printf("BEFORE SLOPE\ni = [%i] j = [%i] dir = [%i] run = [%f] rise = [%f]\n", i, j, direction, e->run, e->rise);
 	if (e->run == 0 || e->run == e->rise)
 		e->slope = 0;
 	else
-		//slope calculation might be wrong? might need conditional
-		e->slope = fabs(e->rise / e->run);
-	printf("set_slope i[%i]j[%i]run[%f]rise[%f]slope[%f]\n", i , j, e->run, e->rise, e->slope);
+	{
+		if (direction == 0)
+			e->slope = fabs(e->rise / e->run);
+		if (direction == 1)
+			e->slope = fabs(e->run / e->rise);
+	}
+	if ((e->rise < 0 && e->run > 0) || (e->run < 0 && e->rise > 0))	//change slope to negative if 1 of 2 < 0
+		e->slope *= -1;
+	printf("set_slope slope[%f]\n", e->slope);
 }
 
 //do too much dont need bottom

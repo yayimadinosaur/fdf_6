@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:04:59 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/02 18:42:32 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/03 19:48:21 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,47 @@ void	draw_gradual(t_env *e, int i, int j, int direction)
 }
 
 //m < 1 || m < -1
+*/
 void	draw_sharp(t_env *e, int i, int j, int direction)
 {
-	e->delta = fabs(e->slope);
+	float	delta;
+	float	tmp;
+	float	min;
+	float	max;
+	float	point;
+
+	if (direction == 0)
+		point = e->pts[i][j].y;
+	else if (direction == 1)
+		point = e->pts[i][j].x;
+	delta = fabs(e->slope);
+	min = 0;
+	max = 0;
+	direction == 0 ? min = e->pts[i][j].x : (min = e->pts[i][j].y);
+	direction == 0 ? max = e->pts[i][j + 1].x : (max = e->pts[i + 1][j].y);
+	printf("draw sharp\n");
+	if (min > max)
+	{
+		printf("min [%f] is bigger than max [%f]\n", min, max);
+		tmp = min;
+		min = max;
+		max = tmp;
+		printf("flipped dir [%i]min [%f] max [%f]\n", direction, min, max);
+	}
+	e->offset = 0;
+	e->threshold = 0.5;
+	while (min < max)
+	{
+		if (e->offset >= e->threshold)
+			e->threshold += 1;
+		if (direction == 0)
+			mlx_pixel_put(e->mlx, e->win, min, point, 0xff00);	//green
+		if (direction == 1)
+			mlx_pixel_put(e->mlx, e->win, point, min, 0xff0000);	//red
+		min++;
+		e->offset+= e->slope;
+	}
 }
-*/
 
 void	draw_straight(t_env *e, int i, int j, int direction)
 {
@@ -37,20 +73,20 @@ void	draw_straight(t_env *e, int i, int j, int direction)
 	max = 0;
 	direction == 0 ? min = e->pts[i][j].x : (min = e->pts[i][j].y);
 	direction == 0 ? max = e->pts[i][j + 1].x : (max = e->pts[i + 1][j].y);
+	printf("draw straight\n");
 	if (min > max)
 	{
 		printf("min [%f] is bigger than max [%f]\n", min, max);
 		tmp = min;
 		min = max;
 		max = tmp;
-		printf("flipped\n");
+		printf("flipped dir [%i]min [%f] max [%f]\n", direction, min, max);
 	}
-	printf("\ndraw_straight dir [%i] min[%f]max[%f]\n", direction, min, max);	//
 	while (min < max)
 	{
-		printf("min = [%i][%i][%f]\n", i, j, min);
 		if (max > 600)
 		{
+			//condition should never happen
 			printf("ERROR! max = [%f]\n", max);
 			break;
 		}
@@ -63,7 +99,7 @@ void	draw_straight(t_env *e, int i, int j, int direction)
 }
 
 //threshold 0.5
-//offset 0
+//offset 0	offset += delta, if offset >= threshold, += 1.0
 //slope = float(rise) / run	 - - float exception fix?
 //adjust = 1 if m >= 0 else -1
 void	draw_down(t_env *e)
@@ -79,8 +115,23 @@ void	draw_down(t_env *e)
 		while (j < e->col)
 		{
 			set_slope(e, i, j, 1);
-		//	if (e->run == 0)
+			if (e->slope == 0)
+			{
 				draw_straight(e, i, j, 1);
+			}
+			else
+			{
+				if (e->slope > 1 || e->slope < -1)
+				{
+					draw_sharp(e, i, j, 1);
+				}
+		/*	fill in later						regneruigreuigbrueibge
+		 *	else
+				{
+					printf("draw gradual\n");
+					draw_gradual(e, i, j, 1);
+				}
+		*/	}
 			j++;
 		}
 		i++;

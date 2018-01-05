@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:09:16 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/04 16:56:30 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/04 17:16:53 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_slope(t_env *e, int i, int j, int direction)
 		e->slope = 0;
 	else
 	{
+		//one of these are conditional not always true, please fix
 		if (direction == 0)
 			e->slope = fabs(e->rise / e->run);
 		if (direction == 1)

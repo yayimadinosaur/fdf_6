@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:09:16 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/03 16:51:24 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/04 16:56:30 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_slope(t_env *e, int i, int j, int direction)
 		e->rise = e->pts[i + 1][j].y - e->pts[i][j].y;
 	}
 	printf("BEFORE SLOPE\ni = [%i] j = [%i] dir = [%i] run = [%f] rise = [%f]\n", i, j, direction, e->run, e->rise);
-	if (e->run == 0 || e->run == e->rise)
+	if (e->run == 0 || e->rise == 0)
 		e->slope = 0;
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:04:59 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/03 19:48:21 by wfung            ###   ########.fr       */
+/*   Updated: 2018/01/05 16:57:46 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,34 @@ void	draw_gradual(t_env *e, int i, int j, int direction)
 */
 void	draw_sharp(t_env *e, int i, int j, int direction)
 {
-	float	delta;
+//	float	delta;
 	float	tmp;
 	float	min;
 	float	max;
 	float	point;
+	float	end;
 
+	direction == 0 ? (point = e->pts[i][j].y) : (point = e->pts[i][j].x);
+	/*
 	if (direction == 0)
 		point = e->pts[i][j].y;
 	else if (direction == 1)
 		point = e->pts[i][j].x;
-	delta = fabs(e->slope);
+	*/
+	direction == 0 ? (end = e->pts[i + 1][j].y) : (end = e->pts[i][j + 1].x);
+	/*
+	if (direction == 0)
+		end = e->pts[i + 1][j].y;
+	else if (direction == 1)
+		end = e->pts[i][j + 1].x;
+	*/
+//	delta = fabs(e->slope);
 	min = 0;
 	max = 0;
 	direction == 0 ? min = e->pts[i][j].x : (min = e->pts[i][j].y);
 	direction == 0 ? max = e->pts[i][j + 1].x : (max = e->pts[i + 1][j].y);
-	printf("draw sharp\n");
+	printf("draw sharp %s\n", direction == 0 ? "right" : "down");
+	printf("min = [%f] max = [%f]\n", min, max);
 	if (min > max)
 	{
 		printf("min [%f] is bigger than max [%f]\n", min, max);
@@ -52,14 +64,27 @@ void	draw_sharp(t_env *e, int i, int j, int direction)
 	e->threshold = 0.5;
 	while (min < max)
 	{
+		/*
+		e->offset+= e->slope;
 		if (e->offset >= e->threshold)
+		{
 			e->threshold += 1;
+			point += (e->slope / ((-1) * e->slope));
+		}
+		*/
 		if (direction == 0)
 			mlx_pixel_put(e->mlx, e->win, min, point, 0xff00);	//green
 		if (direction == 1)
 			mlx_pixel_put(e->mlx, e->win, point, min, 0xff0000);	//red
-		min++;
 		e->offset+= e->slope;
+		if (e->offset >= e->threshold)
+		{
+			e->threshold += 1;
+			point += fabs(e->slope) / e->slope;
+		}
+		min++;
+	//	e->offset+= e->slope;
+		printf("min iter [%f] point iter [%f]\n", min, point);
 	}
 }
 
@@ -125,13 +150,13 @@ void	draw_down(t_env *e)
 				{
 					draw_sharp(e, i, j, 1);
 				}
-		/*	fill in later						regneruigreuigbrueibge
-		 *	else
+		//	fill in later						regneruigreuigbrueibge
+		 	else
 				{
 					printf("draw gradual\n");
-					draw_gradual(e, i, j, 1);
+				//	draw_gradual(e, i, j, 1);
 				}
-		*/	}
+			}
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 17:46:24 by wfung             #+#    #+#             */
-/*   Updated: 2018/01/02 18:40:28 by wfung            ###   ########.fr       */
+/*   Updated: 2018/05/09 19:28:01 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ typedef struct			s_pts
 	float					x;
 	float					y;
 	float					z;
-//	float					x2;	//x pixel stop
-//	float					y2;	//y pixel stop
-//	float					run;	//x2 - x1
-//	float					rise;	//y2 - y1
-//	float					m;	//slope of line = m
-//	float					offset;
-//	float					adjust;
 }						t_pts;	//malloc for (**t_pts) row * col
 
 typedef struct			s_env
@@ -50,33 +43,25 @@ typedef struct			s_env
 	void				*mlx;
 	void				*win;
 
+	int			win_mid_x;
+	int		win_mid_y;
 	int					win_size_x;	//win
 	int					win_size_y;	//win
-	float				win_mid_x;	//win
-	float				win_mid_y;	//win
+	int	end_x;
+	int end_y;
+	int start_x;
+	int start_y;
 
-	int					start_x;	//grid
-	int					start_y;	//grid
-	float				end_x;		//grid limit
-	float				end_y;		//grid limit
+	t_pts				**pts;	//single array for future ref
 
-	float				h_gap;
-	float				w_gap;
 	float				gap;
-
-
-	t_pts				**pts;
-
-	float				slope;
-	float				offset;
-	float				adjust;
-	float				threshold;
-	float				run;
-	float				rise;
-
+	float	h_gap;
+	float	w_gap;
 	int					row;
 	int					col;
 }						t_env;
+
+// to access point (x, y) in pts we do pts[x + row * y];
 
 t_env		*parse_fdf(char **av);
 
@@ -89,6 +74,10 @@ void		draw(t_env *e);
 
 void		draw1(t_env *e);
 
+void		draw2(t_env *e);
+
+void		draw3(t_env *e); //newest
+
 void		draw_right(t_env *e);
 void		draw_down(t_env *e);
 void		rotate(t_env *e);
@@ -97,4 +86,8 @@ void		translate(t_env *e);
 //
 //ttest functions
 void		print_test(t_env *e);
+//theo
+void		draw_points(t_env *e);
+void		transform_to_screen(t_env *);
+void		pixel_put(t_env *e, int x, int y, unsigned color);
 #endif

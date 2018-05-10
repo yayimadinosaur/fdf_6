@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:51:20 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/28 18:06:14 by wfung            ###   ########.fr       */
+/*   Updated: 2018/05/09 17:53:43 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 static void		set_values_2(t_env *e, int i, int j)
 {
-	e->pts[i][j].x = j * e->gap;
-	e->pts[i][j].y = i * e->gap;
+	printf("i [%i] j [%i] gap [%f]\n", i,j,e->gap);
+	e->pts[i][j].x = i;
+	e->pts[i][j].y = j;
+	//old
+//	e->pts[i][j].x = i * e->gap - e->win_mid_x;
+//	e->pts[i][j].y = j * e->gap - e->win_mid_y;
 //	if (j + 1 < e->row && i + 1 < e->col)
 //	{
 		//e->pts[i][j].run = round(e->pts[i][j+1].x) - round(e->pts[i][j].x);
 		//e->pts[i][j].rise = round(e->pts[i+1][j].y) - round(e->pts[i][j].y);
 	//	e->pts[i][j].offset = 0;
 //	}
-/*
- *do slope after rotate not before
+
+ /*do slope after rotate not before
   if (e->pts[i][j].run == 0 || e->pts[i][j].rise == 0)
 		e->pts[i][j].m = 0;	//draw straight
 	if (e->pts[i][j].run != 0 && e->pts[i][j].rise != 0)
@@ -31,7 +35,7 @@ static void		set_values_2(t_env *e, int i, int j)
 	e->pts[i][j].adjust = (e->pts[i][j].m >= 0 ? 1 : -1);
 //	e->pts[i][j].m >= 0 ? e->pts[i][j].adjust = 1 : e->pts[i][j].adjust = -1;
 	e->pts[i][j].offset = 0.5;
-	*/
+*/
 }
 
 //need to add int return of -1 because of fail
@@ -93,8 +97,9 @@ int			set_values2(int win_size, t_env *e, char **av)
 	while (get_next_line(fd, &line) == 1)
 	{
 		j = 0;
-		if (!(buff = ft_strsplit(line, ' ')))
-			clean_strsplit(buff, line, e, e->col);	//need to break after clean str split
+		buff = ft_strsplit(line, ' ' );
+	//	if (!(buff = ft_strsplit(line, ' ')))
+	//		clean_strsplit(buff, line, e, e->col);	//need to break after clean str split
 		while (j < e->col)
 		{
 			e->pts[i][j].z = ft_atoi(buff[j]);

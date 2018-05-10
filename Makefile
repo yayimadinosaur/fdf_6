@@ -6,7 +6,7 @@
 #    By: wfung <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/11 14:50:44 by wfung             #+#    #+#              #
-#    Updated: 2018/01/02 18:41:40 by wfung            ###   ########.fr        #
+#    Updated: 2018/05/09 19:28:12 by wfung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ SRCS	=	main.c\
 			parse_fdf.c\
 			set_values2.c\
 			create_struct.c\
+			transform_to_screen.c\
+			draw_points.c\
 			rotate.c\
-			translate.c\
-			draw1.c\
-			set_slope.c\
+			pixel_put.c\
 
 OBJ =		${SRCS:.c=.o}
 

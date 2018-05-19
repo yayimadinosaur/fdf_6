@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 17:48:03 by wfung             #+#    #+#             */
-/*   Updated: 2017/11/28 18:30:34 by wfung            ###   ########.fr       */
+/*   Updated: 2018/05/18 20:21:48 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static void	rotate_x(t_env *e)
 		j = 0;
 		while (j < e->col)
 		{
-			e->pts[i][j].y = (e->pts[i][j].y * cos(0.7845))
-				- (e->pts[i][j].z * sin(0.7845));
-			e->pts[i][j].z = (e->pts[i][j].y * sin(0.7845))
-				+ (e->pts[i][j].z * sin(0.7845));
+			e->pts[i][j].y = (e->pts[i][j].y * cos(0.2845))
+				- (e->pts[i][j].z * sin(0.2845));
+			e->pts[i][j].z = (e->pts[i][j].y * sin(0.2845))
+				+ (e->pts[i][j].z * sin(0.2845));
 			j++;
 		}
 		i++;
@@ -96,7 +96,7 @@ void		rotate(t_env *e)
 		j = 0;
 		while (j < e->col)
 		{
-			printf("[%i][%i][%f][%f]\n", i, j, e->pts[i][j].x, e->pts[i][j].y);
+			printf("[%i][%i][%f][%f][%f]\n", i, j, e->pts[i][j].x, e->pts[i][j].y, e->pts[i][j].z);
 			j++;
 		}
 		i++;

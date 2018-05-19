@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:50:09 by wfung             #+#    #+#             */
-/*   Updated: 2018/05/17 20:08:50 by wfung            ###   ########.fr       */
+/*   Updated: 2018/05/18 20:14:04 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int ac, char **av)
 {
 	t_env	*e;
-	int		n = 2000;//test size
+	int		n = 1000;//test size
 	if (ac != 2)
 		ft_puterror("Please include a .fdf file");
 	e = parse_fdf(av);

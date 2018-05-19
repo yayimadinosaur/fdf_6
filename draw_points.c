@@ -15,7 +15,7 @@ void	draw_line(t_env *e, t_pts p1, t_pts p2)
 	vect_y /= dist;
 	while (iter < dist)
 	{
-		pixel_put(e, roundf(p1.x), roundf(p1.y), 0xff0000);	//grn
+		pixel_put(e, roundf(p1.x), roundf(p1.y), 0xff00);	//grn
 		p1.x += vect_x;
 		p1.y += vect_y;
 		iter += 1;
